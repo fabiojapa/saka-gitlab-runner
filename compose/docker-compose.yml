@@ -1,0 +1,13 @@
+version: '2'
+services:
+  gitlab-runner:
+    privileged: true
+    image: gitlab/gitlab-runner:latest
+    stdin_open: true
+    volumes:
+    - /srv/gitlab-runner/config:/etc/gitlab-runner
+    - /var/run/docker.sock:/var/run/docker.sock
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
